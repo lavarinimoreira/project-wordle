@@ -3,6 +3,7 @@ import React from "react";
 import { sample } from "../../utils";
 import { WORDS } from "../../data";
 import Form from "../Form/Form";
+import Guesses from "../Guesses/Guesses";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -10,7 +11,14 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  return <Form />;
+  const [guesses, setGuesses] = React.useState([]);
+
+  return (
+    <>
+      <Guesses guesses={guesses} setGuesses={setGuesses} />
+      <Form guesses={guesses} setGuesses={setGuesses} />;
+    </>
+  );
 }
 
 export default Game;

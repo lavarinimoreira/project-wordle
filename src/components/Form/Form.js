@@ -1,12 +1,17 @@
 import React from "react";
 
-function Form() {
+function Form({ guesses, setGuesses }) {
   const [word, setWord] = React.useState("");
 
   // Function to handle submit
   function handleSubmit(event) {
     event.preventDefault();
     console.log(word);
+
+    const newGuesses = [...guesses, { id: crypto.randomUUID(), word }];
+    setGuesses(newGuesses);
+
+    console.log(newGuesses);
 
     setWord("");
   }
