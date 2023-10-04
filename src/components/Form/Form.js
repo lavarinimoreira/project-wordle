@@ -8,7 +8,8 @@ function Form({ guesses, setGuesses }) {
     event.preventDefault();
     console.log(word);
 
-    const newGuesses = [...guesses, { id: crypto.randomUUID(), word }];
+    // const newGuesses = [...guesses, { id: crypto.randomUUID(), word }];
+    const newGuesses = [...guesses, word];
     setGuesses(newGuesses);
 
     console.log(newGuesses);
