@@ -1,18 +1,13 @@
 import React from "react";
 
-function Form({ guesses, setGuesses }) {
+function Form({ handleSubmitGuess, gameStatus }) {
   const [word, setWord] = React.useState("");
 
   // Function to handle submit
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(word);
 
-    // const newGuesses = [...guesses, { id: crypto.randomUUID(), word }];
-    const newGuesses = [...guesses, word];
-    setGuesses(newGuesses);
-
-    console.log(newGuesses);
+    handleSubmitGuess(word);
 
     setWord("");
   }
@@ -28,6 +23,7 @@ function Form({ guesses, setGuesses }) {
       <label htmlFor="guess-input">Enter guess:</label>
       <input
         required
+        disabled={gameStatus !== "running"}
         id="guess-input"
         type="text"
         value={word}
